@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "./navbar.style.css";
+import "./navbar.style.scss";
 const Navbar = () => {
   const user = {};
   return (
@@ -29,7 +29,7 @@ const Navbar = () => {
                 className="logout-btn"
                 onClick={() => {
                   console.log("logout......");
-                  logOutUser();
+                  // logOutUser();
                 }}
               >
                 Log Out
@@ -41,7 +41,7 @@ const Navbar = () => {
                 className="login-btn"
                 onClick={() => {
                   console.log("login......");
-                  logInUser();
+                  // logInUser();
                 }}
               >
                 Log In
