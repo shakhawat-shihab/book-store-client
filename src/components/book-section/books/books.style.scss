@@ -1,0 +1,55 @@
+.book-container {
+    margin-top: 70px;
+    margin-bottom: 70px;
+    padding: 0px 70px;
+}
+
+.book-title {
+    h2 {
+        font-family: 'Lato', sans-serif;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 30px;
+    }
+}
+
+.book-card-container {
+    display: grid;
+    flex: "1";
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px 30px;
+    // padding-right: 15px ;
+    // border-right: 1px solid gray;
+}
+
+
+.book-section{
+    display: grid;
+    // grid-template-columns: 4fr 1fr;
+}
+
+.book-card {
+    border-radius: 8px;
+    border: 1px solid gray;
+    max-height: 600px;
+
+    img {
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
+    }
+
+    .info {
+        padding: 0px 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    p {
+        font-size: 18px;
+        font-family: 'Lato', sans-serif;
+    }
+
+    .info p:nth-child(2) {
+        color: rgb(0, 208, 255);
+    }
+}
