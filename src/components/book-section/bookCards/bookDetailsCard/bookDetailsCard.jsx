@@ -36,7 +36,8 @@ const BookDetailsCard = ({ props }) => {
           setImageState(-1);
         }
       } catch (e) {
-        console.error(`Error loading image ${index}: ${error}`);
+        console.error(`Error loading image : ${e}`);
+        setImageState(-1);
       }
     };
 

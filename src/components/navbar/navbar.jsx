@@ -1,12 +1,17 @@
 import React, { useContext } from "react";
 import "./navbar.style.scss";
+import img from "../../assets/images/book-worm.png";
 const Navbar = () => {
   const user = {};
   return (
     <nav>
       <ul className="nav-container">
         <div className="logo-container">
-          <span>Book Store</span>
+          <span className="logo-container">
+            Book
+            <img src={img} alt="" />
+            Worm
+          </span>
         </div>
         <div className="navbar-optinos">
           <li>

@@ -14,9 +14,16 @@ nav{
 .logo-container{
     display: flex;
     align-items: center;
-    color: wheat;
-    font-size: 22px;
+    color: #FC5555;
+    font-size: 25px;
+    font-weight: 400;
     letter-spacing: 5px;
+    img{
+        height: 30px;
+        width: 30px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
 
 ul {
