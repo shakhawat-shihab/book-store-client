@@ -1,0 +1,13 @@
+.logo-container{
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    letter-spacing: 5px;
+    text-transform: capitalize;
+    span{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        color: rgb(0, 0, 0);
+    }
+}
+
