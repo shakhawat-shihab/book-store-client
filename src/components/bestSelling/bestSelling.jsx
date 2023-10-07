@@ -8,7 +8,6 @@ const BestSelling = () => {
   const [visibleBooks, setVisibleBooks] = useState([]);
   const [startIndex, setStartIndex] = useState(0);
   let limit = 5;
-  // const [endIndex, setEndIndex] = useState(4);
 
   useEffect(() => {
     fetch("http://localhost:8000/books/all")
@@ -21,8 +20,6 @@ const BestSelling = () => {
     setVisibleBooks(slicedBooks);
   }, [startIndex, books]);
 
-  // console.log(books);
-
   const prevSlide = () => {
     if (startIndex > 0) setStartIndex(startIndex - 1);
     else console.log("can't slide to prev");
@@ -33,8 +30,7 @@ const BestSelling = () => {
     else console.log("can't slide to next");
   };
 
-  console.log(startIndex);
-
+  // console.log(startIndex);
   // console.log("currentIndex ", currentIndex);
 
   return (
@@ -49,21 +45,26 @@ const BestSelling = () => {
         </div>
 
         <div className="best-selling-books">
-          <button onClick={prevSlide} className="prev-button">
-            <SlArrowLeft size={20} />
-          </button>
-          <button onClick={nextSlide} className="next-button">
-            <SlArrowRight size={20} />
-          </button>
-          {visibleBooks?.map((x, index) => (
-            <BookCard
-              key={x?._id}
-              props={x}
-              // style={{
-              //   transform: `translateX(${100 * (index - currentIndex)}%)`,
-              // }}
-            />
-          ))}
+          <div className="best-selling-books-buttons">
+            <button onClick={prevSlide} className="prev-button">
+              <SlArrowLeft size={20} />
+            </button>
+            <button onClick={nextSlide} className="next-button">
+              <SlArrowRight size={20} />
+            </button>{" "}
+          </div>
+
+          <div className="best-selling-books-cards">
+            {visibleBooks?.map((x, index) => (
+              <BookCard
+                key={x?._id}
+                props={x}
+                style={{
+                  transform: `translateX(${100 * (index - 0)}%)`,
+                }}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
