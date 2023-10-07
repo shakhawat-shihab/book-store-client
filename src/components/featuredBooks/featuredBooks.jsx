@@ -41,7 +41,7 @@ const FeaturedBooks = () => {
         <div className="featured-section-title">
           <h2>Featured Books</h2>
         </div>
-        <div>
+        <div className="featured-section-nav-contianer">
           <NavSections
             activeOption={selectedSection}
             options={sectionName}
