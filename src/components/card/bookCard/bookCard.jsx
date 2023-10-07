@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./bookCard.scss";
 import demobook from "../../../assets/images/demoBook.png";
 import Spinner from "../../spinner/spinner";
+import { SlHeart } from "react-icons/sl";
 
 const BookCard = ({ props }) => {
   const [imageState, setImageState] = useState(0);
@@ -36,10 +37,22 @@ const BookCard = ({ props }) => {
     }
   }, [images]);
 
+  const favouriteButton = (e) => {
+    console.log("favourite button clicked");
+    e.stopPropagation();
+  };
+  const cartButton = (e) => {
+    console.log("cart button clicked");
+    e.stopPropagation();
+  };
+  const cardClicked = () => {
+    console.log("card clicked");
+  };
+
   console.log(title, imageState);
 
   return (
-    <div className="book-card-container">
+    <div className="book-card-container" onClick={() => cardClicked()}>
       <div className="book-card-img">
         {/* <img src={images[0]} alt="" /> */}
         {imageState == 0 ? (
@@ -48,8 +61,8 @@ const BookCard = ({ props }) => {
           <img
             src={`${imageState == 1 ? images[0] : demobook}`}
             alt="book image"
-            width="120px"
-            height="170px"
+            width="140px"
+            height="180px"
           />
         )}
       </div>
@@ -61,7 +74,20 @@ const BookCard = ({ props }) => {
         </div>
 
         <div className="book-card-cart">
-          <span>Add to Cart</span>
+          {/* <div style={{ display: "flex", justifyContent: "space-between" }}> */}
+          <button
+            className="book-card-cart-button"
+            onClick={(e) => cartButton(e)}
+          >
+            Add to Cart
+          </button>
+          <button
+            className="book-card-favourite-button"
+            onClick={(e) => favouriteButton(e)}
+          >
+            <SlHeart />
+          </button>
+          {/* </div> */}
         </div>
       </div>
     </div>
