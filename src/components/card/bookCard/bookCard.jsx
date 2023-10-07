@@ -21,7 +21,7 @@ const BookCard = ({ props }) => {
           setImageState(-1);
         }
       } catch (e) {
-        console.error(`Error loading image : ${e}`);
+        // console.error(`Error loading image : ${e}`);
         setImageState(-1);
       }
     };
@@ -49,7 +49,7 @@ const BookCard = ({ props }) => {
     console.log("card clicked");
   };
 
-  console.log(title, imageState);
+  // console.log(title, imageState);
 
   return (
     <div className="book-card-container" onClick={() => cardClicked()}>
