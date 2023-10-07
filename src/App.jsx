@@ -17,6 +17,7 @@ function App() {
         <BestSelling />
         <FeaturedBooks />
         {/* <Routes></Routes> */}
+        <Footer />
       </BrowserRouter>
       {/* <PreNavbar />
       <Navbar />
