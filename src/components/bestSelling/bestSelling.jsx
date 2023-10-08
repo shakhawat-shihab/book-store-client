@@ -2,21 +2,36 @@ import React, { useEffect, useState } from "react";
 import { SlArrowRight, SlArrowLeft } from "react-icons/sl";
 import "./bestSelling.style.scss";
 import BookCard from "../card/bookCard/bookCard";
+import { useSelector } from "react-redux";
+import bookAPI from "../../api/bookAPI";
+import Spinner from "../spinner/spinner";
 
 const BestSelling = () => {
   const [books, setBooks] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [visibleBooks, setVisibleBooks] = useState([]);
   const [startIndex, setStartIndex] = useState(0);
   let limit = 5;
+  const { getAllBooks } = bookAPI();
+
+  let { allBooks, isLoadingAllBook } = useSelector((state) => state.books);
 
   useEffect(() => {
-    fetch("http://localhost:8000/books/all")
-      .then((res) => res.json())
-      .then((data) => setBooks(data?.data?.books));
+    setIsLoading(isLoadingAllBook);
+  }, [isLoadingAllBook]);
+
+  useEffect(() => {
+    setBooks(allBooks);
+  }, [allBooks]);
+
+  useEffect(() => {
+    if (books.length == 0) {
+      getAllBooks();
+    }
   }, []);
 
   useEffect(() => {
-    let slicedBooks = books.slice(startIndex, startIndex + limit);
+    let slicedBooks = books?.slice(startIndex, startIndex + limit);
     setVisibleBooks(slicedBooks);
   }, [startIndex, books]);
 
@@ -32,6 +47,8 @@ const BestSelling = () => {
 
   // console.log(startIndex);
   // console.log("currentIndex ", currentIndex);
+
+  // console.log(isLoading, books);
 
   return (
     <div className="container">
@@ -54,17 +71,23 @@ const BestSelling = () => {
             </button>{" "}
           </div>
 
-          <div className="best-selling-books-cards">
-            {visibleBooks?.map((x, index) => (
-              <BookCard
-                key={x?._id}
-                props={x}
-                style={{
-                  transform: `translateX(${100 * (index - 0)}%)`,
-                }}
-              />
-            ))}
-          </div>
+          {isLoading ? (
+            <div className="top-bottom-margin">
+              <Spinner />
+            </div>
+          ) : (
+            <div className="best-selling-books-cards">
+              {visibleBooks?.map((x, index) => (
+                <BookCard
+                  key={x?._id}
+                  props={x}
+                  style={{
+                    transform: `translateX(${100 * (index - 0)}%)`,
+                  }}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

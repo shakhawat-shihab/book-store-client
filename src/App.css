@@ -12,4 +12,9 @@ hr {
     border-top: 0.7px solid #8c8b8bb0;
 	  border-bottom: 0.5px solid #fff;
   }
+
+.top-bottom-margin{
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
   
