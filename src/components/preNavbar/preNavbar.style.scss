@@ -28,8 +28,11 @@
         padding-left: 20px;
         padding-right: 20px;
     }
-    div:hover{
+    div:hover .icon{
         color: tomato;
     }
-
+    .icon{
+        color: black;
+    }
 }
+

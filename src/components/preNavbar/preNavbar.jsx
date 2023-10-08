@@ -8,6 +8,7 @@ import {
   SlUser,
 } from "react-icons/sl";
 import "./preNavbar.style.scss";
+import { Link } from "react-router-dom";
 
 const PreNavbar = () => {
   return (
@@ -28,16 +29,22 @@ const PreNavbar = () => {
       {/* right side  */}
       <div className="pre-nav-right">
         <div>
-          <SlHeart className="icon" size="20px" />
+          <SlLocationPin className="icon" size={22} />
         </div>
         <div>
-          <SlLocationPin className="icon" size="20px" />
+          <Link to="/wishlist">
+            <SlHeart className="icon" size={22} />
+          </Link>
         </div>
         <div>
-          <SlUser className="icon" size="20px" />
+          <Link to="/cart">
+            <SlHandbag className="icon" size={22} />
+          </Link>
         </div>
         <div>
-          <SlHandbag className="icon" size="20px" />
+          <Link to="/login">
+            <SlUser className="icon" size={22} />
+          </Link>
         </div>
       </div>
     </div>
