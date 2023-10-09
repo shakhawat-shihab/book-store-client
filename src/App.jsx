@@ -14,6 +14,7 @@ import Home from "./pages/home/home";
 import Cart from "./pages/cart/cart";
 import WishList from "./pages/wishList/wishList";
 import AdminRoute from "./pages/authenticate/adminRoute";
+import UserRoute from "./pages/authenticate/userRoute";
 
 function App() {
   return (
@@ -39,14 +40,14 @@ function App() {
               <Route path="delete" element={<DeleteProfile />} />
             </Route>
           </Route> */}
-          <Route element={<User />}>
-            <Route path="/add-product" element={<InsertProduct />} />
+          <Route element={<UserRoute />}>
+            {/* <Route path="/add-product" element={<InsertProduct />} />
             <Route path="/update-product" element={<UpdateProduct />} />
             <Route path="/delete-product" element={<DeleteProduct />} />
             <Route path="/profile" element={<Profile />}>
               <Route path="edit" element={<EditProfile />} />
               <Route path="delete" element={<DeleteProfile />} />
-            </Route>
+            </Route> */}
           </Route>
         </Routes>
         <Footer />
