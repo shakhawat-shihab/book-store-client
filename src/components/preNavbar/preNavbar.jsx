@@ -41,11 +41,11 @@ const PreNavbar = () => {
             <SlHandbag className="icon" size={22} />
           </Link>
         </div>
-        <div>
+        {/* <div>
           <Link to="/login">
             <SlUser className="icon" size={22} />
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );

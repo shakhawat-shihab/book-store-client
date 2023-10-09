@@ -44,6 +44,7 @@ const bookAPI = () => {
         dispatch(lodingFinishedReducer("isLoadingBooksByRating"));
       });
   };
+
   const getBooksByPriceAsc = () => {
     axiosInstance
       .get(`/books/all?sortOrder=asc&sortParam=price`)
