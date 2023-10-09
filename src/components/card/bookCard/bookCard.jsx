@@ -43,6 +43,7 @@ const BookCard = ({ props }) => {
   };
   const cartButton = (e) => {
     // console.log("cart button clicked");
+    addToCartReducer(props);
     e.stopPropagation();
   };
   const cardClicked = () => {
