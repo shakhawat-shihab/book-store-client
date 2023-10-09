@@ -54,9 +54,10 @@ const BookCard = ({ props }) => {
   return (
     <div className="book-card-container" onClick={() => cardClicked()}>
       <div className="book-card-img">
-        {/* <img src={images[0]} alt="" /> */}
         {imageState == 0 ? (
-          <Spinner />
+          <div style={{ width: "140px", height: "180px" }}>
+            <Spinner />
+          </div>
         ) : (
           <img
             src={`${imageState == 1 ? images[0] : demobook}`}

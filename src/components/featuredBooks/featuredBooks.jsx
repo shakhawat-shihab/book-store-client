@@ -2,38 +2,65 @@ import React, { useEffect, useState } from "react";
 import NavSections from "../navSections/navSections";
 import "./featuredBooks.style.scss";
 import BookCard from "../card/bookCard/bookCard";
+import bookAPI from "../../api/bookAPI";
+import { useSelector } from "react-redux";
+import Spinner from "../spinner/spinner";
+
 const FeaturedBooks = () => {
   const [books, setBooks] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedSection, setSelectedSection] = useState(0);
+  const { getBooksByPriceAsc, getBooksByRatingDesc, getBooksByViewDesc } =
+    bookAPI();
   const sectionName = ["featured", "on sale", "most viewed"];
   const userSelectedSection = (index) => {
     setSelectedSection(index);
   };
-  console.log(selectedSection);
+  // console.log(selectedSection);
+
+  let {
+    booksByRatingDesc,
+    booksByPriceAsc,
+    booksByViewsDesc,
+    isLoadingBooksByRating,
+    isLoadingBooksByPrice,
+    isLoadingBooksByView,
+  } = useSelector((state) => state.books);
 
   useEffect(() => {
     if (selectedSection == 0) {
-      fetch("http://localhost:8000/books/all?sortOrder=desc&sortParam=rating")
-        .then((res) => res.json())
-        .then((data) => {
-          setBooks(data?.data?.books);
-        });
+      setBooks(booksByRatingDesc);
+    } else if (selectedSection == 1) {
+      setBooks(booksByPriceAsc);
+    } else if (selectedSection == 2) {
+      setBooks(booksByViewsDesc);
     }
-    if (selectedSection == 1) {
-      fetch("http://localhost:8000/books/all?sortOrder=asc&sortParam=price")
-        .then((res) => res.json())
-        .then((data) => {
-          setBooks(data?.data?.books);
-        });
+  }, [booksByRatingDesc, booksByPriceAsc, booksByViewsDesc]);
+
+  useEffect(() => {
+    if (selectedSection == 0) {
+      // console.log("isLoadingBooksByRating ", isLoadingBooksByRating);
+      setIsLoading(isLoadingBooksByRating);
+    } else if (selectedSection == 1) {
+      // console.log("isLoadingBooksByPrice ", isLoadingBooksByPrice);
+      setIsLoading(isLoadingBooksByPrice);
+    } else if (selectedSection == 2) {
+      // console.log("isLoadingBooksByView ", isLoadingBooksByView);
+      setIsLoading(isLoadingBooksByView);
     }
-    if (selectedSection == 2) {
-      fetch("http://localhost:8000/books/all?sortOrder=desc&sortParam=views")
-        .then((res) => res.json())
-        .then((data) => {
-          setBooks(data?.data?.books);
-        });
+  }, [isLoadingBooksByPrice, isLoadingBooksByRating, isLoadingBooksByView]);
+
+  useEffect(() => {
+    if (selectedSection == 0) {
+      getBooksByRatingDesc();
+    } else if (selectedSection == 1) {
+      getBooksByPriceAsc();
+    } else if (selectedSection == 2) {
+      getBooksByViewDesc();
     }
   }, [selectedSection]);
+
+  // console.log(isLoading);
 
   return (
     <div className="container ">
@@ -48,13 +75,20 @@ const FeaturedBooks = () => {
             userSelectedSection={userSelectedSection}
           />
         </div>
-        <div style={{ display: "flex" }}>
-          <div className="featured-books-cards">
-            {books?.map((x, index) => (
-              <BookCard key={x?._id} props={x} />
-            ))}
+
+        {isLoading ? (
+          <div className="top-bottom-margin">
+            <Spinner />
           </div>
-        </div>
+        ) : (
+          <div style={{ display: "flex" }}>
+            <div className="featured-books-cards">
+              {books?.map((x, index) => (
+                <BookCard key={x?._id} props={x} />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

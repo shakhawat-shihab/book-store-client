@@ -6,7 +6,7 @@ const PasswordInput = ({ field, hints, error }) => {
   const [visible, setVisible] = useState(false);
   return (
     <div
-      className="password-input"
+      className="password-input-container"
       style={{
         border: error ? "1px solid red" : "",
       }}

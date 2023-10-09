@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./login.style.scss";
 import { Controller, useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PasswordInput from "../../components/passwordInput/passwordInput";
-
-// import useAuthHook from "../../hooks/useAuthHook";
+import userAPI from "../../api/userAPI";
+import { useSelector } from "react-redux";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { email } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    if (email) {
+      navigate("/");
+    }
+  }, [email]);
+
+  const { logInUser } = userAPI();
   const {
     handleSubmit,
     control,
@@ -19,12 +29,12 @@ const Login = () => {
       password: "",
     },
   });
-  //   const { getLogIn, isLoadingAuth } = useAuthHook();
 
   const handleLogin = (data) => {
     console.log(data);
-    // getLogIn({ email: getValues("email"), password: getValues("password") });
+    logInUser({ email: getValues("email"), password: getValues("password") });
   };
+
   return (
     <div className="login-container">
       <form
