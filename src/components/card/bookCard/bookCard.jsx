@@ -38,11 +38,11 @@ const BookCard = ({ props }) => {
   }, [images]);
 
   const favouriteButton = (e) => {
-    console.log("favourite button clicked");
+    // console.log("favourite button clicked");
     e.stopPropagation();
   };
   const cartButton = (e) => {
-    console.log("cart button clicked");
+    // console.log("cart button clicked");
     e.stopPropagation();
   };
   const cardClicked = () => {
@@ -69,7 +69,9 @@ const BookCard = ({ props }) => {
       </div>
       <div className="book-card-info-container">
         <div className="book-card-info">
-          <p>{title}</p>
+          <p>
+            {title?.length > 18 ? title?.substr(0, 18).concat(" ...") : title}
+          </p>
           <p>{author}</p>
           <p>{price}</p>
         </div>

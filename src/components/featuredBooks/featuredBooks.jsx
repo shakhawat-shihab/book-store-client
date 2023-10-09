@@ -81,7 +81,7 @@ const FeaturedBooks = () => {
             <Spinner />
           </div>
         ) : (
-          <div style={{ display: "flex" }}>
+          <div>
             <div className="featured-books-cards">
               {books?.map((x, index) => (
                 <BookCard key={x?._id} props={x} />

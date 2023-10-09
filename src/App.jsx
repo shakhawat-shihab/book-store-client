@@ -15,6 +15,7 @@ import Cart from "./pages/cart/cart";
 import WishList from "./pages/wishList/wishList";
 import AdminRoute from "./pages/authenticate/adminRoute";
 import UserRoute from "./pages/authenticate/userRoute";
+import Books from "./pages/books/books";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/wishlist" element={<WishList />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/books" element={<Books />} />
           <Route path="*" element={<NotFound />} />
 
           {/* <Route element={<AdminRoute />}>

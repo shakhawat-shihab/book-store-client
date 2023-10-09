@@ -10,6 +10,7 @@ const initialState = {
   booksByViewsDesc: [],
   isLoadingBooksByView: false,
   message: "",
+  searchKeyWord: "",
 };
 
 const bookSlice = createSlice({
@@ -34,8 +35,13 @@ const bookSlice = createSlice({
       state.isLoadingBooksByView = true;
       state.booksByViewsDesc = action.payload;
     },
+
     lodingFinishedReducer: (state, action) => {
       state[`${action.payload}`] = false;
+    },
+
+    searchBookKeywordReducer: (state, action) => {
+      state.searchKeyWord = action.payload;
     },
 
     // addProductReducer: (state, action) => {
@@ -66,6 +72,7 @@ export const {
   loadBookByRatingDescReducer,
   loadBooksByPriceAscReducer,
   loadBooksByViewDescReducer,
+  searchBookKeywordReducer,
 } = bookSlice.actions;
 
 export default bookSlice.reducer;

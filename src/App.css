@@ -18,3 +18,9 @@ hr {
   margin-bottom: 60px;
 }
   
+.half-height{
+  height: 50vh;
+}
+.three-four-height{
+  height: 75vh;
+}

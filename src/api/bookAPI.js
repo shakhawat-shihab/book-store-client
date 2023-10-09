@@ -28,6 +28,13 @@ const bookAPI = () => {
       });
   };
 
+  const getSearchedBook = async (search, page) => {
+    const data = await axiosInstance
+      .get(`/books/all?search=${search}&page=${page}`)
+      .then((res) => res.data);
+    return data;
+  };
+
   const getBooksByRatingDesc = () => {
     axiosInstance
       .get(`/books/all?sortOrder=desc&sortParam=rating`)
@@ -81,6 +88,7 @@ const bookAPI = () => {
     getBooksByRatingDesc,
     getBooksByPriceAsc,
     getBooksByViewDesc,
+    getSearchedBook,
   };
 };
 

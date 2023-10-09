@@ -1,0 +1,15 @@
+.page-number-container{
+    text-align: center;
+    .page-btn{
+        color: white;
+        background-color: rgba(69, 69, 248, 0.922);
+        padding: 5px 8px;
+        margin: 0px 5px;
+        border: none;
+        border-radius: 2px;
+    }
+    .active-page{
+        color: black;
+        background-color: rgba(80, 133, 249, 0.953);
+    }
+}
